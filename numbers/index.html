@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="makeArray">Сформировать массив</button>
+    <div class="result array"></div>
+    <di class="result min"></di>
+    <div class="result max"></div>
+    <div class="result average"></div>
+    <div class="result summary"></div>
+    <div class="result multiplex"></div>
+
+    <script>
+        const makeArrayBtn = document.querySelector('.makeArray');
+        makeArrayBtn.addEventListener('click', () => {
+            document.querySelector('.array').innerHTML = '';
+            document.querySelector('.min').innerHTML = '';
+            document.querySelector('.max').innerHTML = '';
+            document.querySelector('.average').innerHTML = '';
+            document.querySelector('.summary').innerHTML = '';
+            document.querySelector('.multiplex').innerHTML = '';
+
+            let randomArray = [];
+            for (let i = 0; i < 10; i++) {
+                let n = -10;
+                let m = 10
+                let randomNum = Math.round(Math.random() * (m - n) + n);
+                randomArray.push(randomNum);
+            }
+            console.log(randomArray);
+            const min = Math.min(...randomArray);
+            const max = Math.max(...randomArray);
+            const sum = randomArray.reduce((a, b) => (a + b));
+            const average = Math.round(sum / randomArray.length);
+            const multiplex = randomArray.reduce((a, b) => (a * b));
+
+            document.querySelector('.array').innerHTML += `Сгенерированный массив: ${randomArray}`;
+            document.querySelector('.min').innerHTML += `Минимальное значение: ${min}`;
+            document.querySelector('.max').innerHTML += `Максимальное значение: ${max}`;
+            document.querySelector('.average').innerHTML += `Среднее арифметическое: ${average}`;
+            document.querySelector('.summary').innerHTML += `Сумма чисел: ${sum}`;
+            document.querySelector('.multiplex').innerHTML += `Произведение чисел: ${multiplex}`;
+        })
+    </script>
+</body>
+
+</html>
