@@ -13,17 +13,17 @@ function checkSpam() {
     let commentFinal = commentSpam.replace(spam2, '***');
     comments.push(commentFinal);
     generateComments();
+    document.getElementById('newcomment').value = '';
 }
 
-// console.log(comments);
+
 
 function generateComments() {
     let commentsResult = '';
     for (let comment of comments){
         commentsResult += `<div>${comment}</div>`;
     }
-    result.innerText = commentsResult;
-    newComment = '';
+    result.innerHTML = commentsResult;
 }
 
 document.addEventListener('DOMContentLoaded',
